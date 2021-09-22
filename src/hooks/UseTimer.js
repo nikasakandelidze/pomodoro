@@ -1,27 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+const DELAY = 1000;
 
-const useTimer = ({timeout}) => {
+const useTimer = ({ timeout }) => {
     const [time, setTime] = useState(null)
-    const input = useRef(null)
 
-    useEffect(()=>{
-        if(time != null && time > 0){
-            setTimeout(()=>{
-                setTime(time=>time - 1);
-            }, timeout);
-        } else{
+    useEffect(() => {
+        setTime(timeout)
+    }, [timeout])
+
+    useEffect(() => {
+        if (time != null && time > 0) {
+            setTimeout(() => {
+                setTime(time => time - 1);
+            }, DELAY);
+        } else {
             time != null && alert('done');
         }
     }, [time, timeout])
 
-    useEffect(()=>{
-        input.current.focus()
-    }, [])
-
-    const startCountdown = () => setTime(input.current);
-
-    return {startCountdown, input, time}
+    return { time }
 
 }
 

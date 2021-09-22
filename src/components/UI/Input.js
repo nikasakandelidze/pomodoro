@@ -1,13 +1,12 @@
+import {Input} from '@material-ui/core';
 
 
-const Input = ({useInputCallback}) =>{
+const CustomInput = ({onChange}) =>{
     return (
         <div>
-            <input>
-            
-            </input>
+            <Input color={'primary'} onChange={e=>onChange(e)}/>
         </div>
     );
 };
 
-export default Input;
+export default CustomInput;

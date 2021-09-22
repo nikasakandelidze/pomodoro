@@ -1,10 +1,11 @@
+import {Button} from '@material-ui/core';
 
-function Button({title, onClickCallback}){
-    return (<div>
-        <button onClick={onClickCallback}>
+function CustomButton({title, onClickCallback}){
+    return (<div className={'classic-button'}>
+        <Button color={'primary'} variant={'contained'} onClick={e=>onClickCallback()}>
             {title}
-        </button>
+        </Button>
     </div>);
 }
 
-export default Button;
+export default CustomButton;

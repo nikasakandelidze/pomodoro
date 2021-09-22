@@ -1,20 +1,11 @@
 import useTimer from '../hooks/UseTimer';
-import Button from './UI/Button'
 
-function Timer(){
-
-    const { startCountdown, input, time } = useTimer( {timeout: 1000} )
-
+function Timer({initTimeout}){
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const { time } = useTimer( {timeout: initTimeout} )
 
     return (<div>
-        <div>
-            <input ref={input} type='text' name='time' value={time} onChange={e=>{
-                input.current = e.target.value;
-            }}/>                
-        </div>
-        <div>
-            <Button title={'start timer'} onClickCallback={()=>startCountdown()}/>    
-        </div>
+        Time left: {time}
     </div>);
 }
 
