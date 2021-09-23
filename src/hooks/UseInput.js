@@ -8,9 +8,16 @@ const useInput = ({type}) => {
     const [input, setInput] = useState(null)
     const [message, setMessage] = useState("")
 
+    const validateType = (value) => {
+        if(type === 'number'){
+            return value.match(NUMBER_REGEX);
+        }
+        return true
+    }
+
     const handleInputChange = (e) => {
         let value = e.target.value
-        if(value && !value.match(NUMBER_REGEX)){
+        if(value && !validateType(value)){
             setMessage(`Input value must be of ${type} type`)
         }else{
             if(message !== ""){

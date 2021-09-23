@@ -10,6 +10,7 @@
 .interactive-ui-container{
   text-align: center;
   display: inline-block;
+  margin-top: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

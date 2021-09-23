@@ -1,32 +1,44 @@
-import TimersList from './components/TimersList';
-import { useState } from 'react/cjs/react.development';
+import TasksList from './components/TasksList';
+// import { useState } from 'react/cjs/react.development';
 import useInput from './hooks/UseInput';
 import CustomButton from './components/UI/Button';
 import CustomInput from './components/UI/Input';
 
 import './App.css';
 import ErrorMessage from './components/ErrorMessage';
+import { Typography } from '@material-ui/core';
+import useTasks from './hooks/useTasks';
 
 let counter = 0;
 
 function App() {
-  const [timers, setTimers] = useState([]);
-  const { input, message, handleInputChange } = useInput({type : "number"});
+  const [tasks, addTask] = useTasks()
+  // const [timers, setTimers] = useState([]);
+  const { input: timeInput, message: timeInputMessage, handleInputChange: handleTimeInputChange } = useInput({type : "number"});
+  const { input: descriptionInput,  handleInputChange: handleDescriptionInputChange } = useInput({type : "string"});
 
   const handleNewTimerData = () => {
-    if (!input) return
-    setTimers(timers => [...timers, { id: counter++, time: input }])
+    if (!timeInput) return
+    addTask({id: counter++, time: timeInput, description: descriptionInput})
+    // setTimers(timers => [...timers, { id: counter++, time: timeInput }])
   };
 
   return (
     <div className='App'>
       <div className='interactive-ui-container'>
-        <CustomInput type={'text'} onChange={(e) => handleInputChange(e)} helperMessage ={message} />
-        <ErrorMessage message={message}/>
+        <div>
+          <Typography>Time</Typography>
+          <CustomInput onChange={(e) => handleTimeInputChange(e)}/>
+          <ErrorMessage message={timeInputMessage}/>
+        </div>
+        <div>
+          <Typography>Description</Typography>
+          <CustomInput onChange={(e) => handleDescriptionInputChange(e)} multiline minRows={8} maxRows={10}/>
+        </div>
         <CustomButton title={'schedule'} onClickCallback={e => handleNewTimerData()} />
       </div>
       <div>
-        <TimersList elements={timers} />
+        <TasksList elements={tasks} />
       </div>
     </div>
   );
