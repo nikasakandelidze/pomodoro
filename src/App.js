@@ -5,12 +5,13 @@ import CustomButton from './components/UI/Button';
 import CustomInput from './components/UI/Input';
 
 import './App.css';
+import ErrorMessage from './components/ErrorMessage';
 
 let counter = 0;
 
 function App() {
   const [timers, setTimers] = useState([]);
-  const { input, handleInputChange } = useInput();
+  const { input, message, handleInputChange } = useInput({type : "number"});
 
   const handleNewTimerData = () => {
     if (!input) return
@@ -18,9 +19,10 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div>
-        <CustomInput type={'text'} onChange={(e) => handleInputChange(e)} />
+    <div className='App'>
+      <div className='interactive-ui-container'>
+        <CustomInput type={'text'} onChange={(e) => handleInputChange(e)} helperMessage ={message} />
+        <ErrorMessage message={message}/>
         <CustomButton title={'schedule'} onClickCallback={e => handleNewTimerData()} />
       </div>
       <div>

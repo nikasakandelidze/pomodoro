@@ -1,0 +1,11 @@
+.error-message-container{
+    width: fit-content;
+    font-size: x-large;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: oblique;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+
+    color: rgb(145, 12, 12);
+}

@@ -1,10 +1,10 @@
-import {Input} from '@material-ui/core';
+import {TextField} from '@material-ui/core';
 
 
 const CustomInput = ({onChange}) =>{
     return (
         <div>
-            <Input color={'primary'} onChange={e=>onChange(e)}/>
+            <TextField color={'primary'} onChange={e=>onChange(e)} variant='filled'/>
         </div>
     );
 };
