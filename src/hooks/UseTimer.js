@@ -4,6 +4,7 @@ const DELAY = 1000;
 
 const useTimer = ({ timeout }) => {
     const [time, setTime] = useState(null)
+    const [done, setDone] = useState(false)
 
     useEffect(() => {
         setTime(timeout)
@@ -15,11 +16,11 @@ const useTimer = ({ timeout }) => {
                 setTime(time => time - 1);
             }, DELAY);
         } else {
-            time != null && alert('done');
+            time != null && setDone(true);
         }
     }, [time, timeout])
 
-    return { time }
+    return { time, done }
 
 }
 
