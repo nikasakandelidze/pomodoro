@@ -27,13 +27,13 @@ function App() {
     <div className='App'>
       <div className='interactive-ui-container'>
         <div>
-          <Typography>Time</Typography>
+          <Typography>Time(Seconds)</Typography>
           <CustomInput onChange={(e) => handleTimeInputChange(e)}/>
           <ErrorMessage message={timeInputMessage}/>
         </div>
         <div>
           <Typography>Description</Typography>
-          <CustomInput onChange={(e) => handleDescriptionInputChange(e)} multiline minRows={8} maxRows={10}/>
+          <CustomInput onChange={(e) => handleDescriptionInputChange(e)} multiline minRows={8} maxRows={8}/>
         </div>
         <CustomButton title={'schedule'} onClickCallback={e => handleNewTimerData()} />
       </div>
