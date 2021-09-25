@@ -3,8 +3,11 @@ import Scheduler from "./components/Scheduler";
 
 import './App.css'
 import Canvas from "./components/Canvas";
+import useDrawing from "./utils/DrawingUtils";
 
 function App() {
+  const [handleMouseDown, handleMouseUp, handleMouseMove] = useDrawing()
+
   return (
     <div className='App'>
        <Router>
@@ -23,8 +26,10 @@ function App() {
           <Switch>
           <Route path='/canvas'>
               <Canvas w={800} h={500} draw = {(canvas, ctx) => {
-                ctx.fillStyle = 'red'
-                ctx.fillRect(100, 100, 200, 200)  
+                        canvas.addEventListener('mousedown', (e) => handleMouseDown(e, ctx));
+                        canvas.addEventListener('mouseup', handleMouseUp);
+                        canvas.addEventListener('mousemove', (e) => handleMouseMove(e, ctx));
+                
               }}/>
             </Route>
             <Route path='/'>
