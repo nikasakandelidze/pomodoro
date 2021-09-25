@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
 import { useEffect} from 'react';
-import useTimer from '../hooks/UseTimer';
+import useTimer from '../../hooks/UseTimer';
 
 function Timer({initTimeout, setDone}){
     // eslint-disable-next-line react-hooks/exhaustive-deps
