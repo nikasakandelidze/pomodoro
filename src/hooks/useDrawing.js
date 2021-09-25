@@ -1,11 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import useList from "./useList";
 
-const useDrawing = () =>{
-    
+const useDrawing = () =>{    
     const isDrawing = useRef(false);
     let start = { x: 0, y: 0 };
     let end = { x: 0, y: 0 };
-
+    const drawnPoints = useRef([])
+    
     const handleMouseDown = (evt, context) => {
         const ctxRect = context.canvas.getBoundingClientRect()
         start = {
@@ -18,6 +19,7 @@ const useDrawing = () =>{
             y: evt.clientY - ctxRect.top,
         };
         isDrawing.current = true;
+        drawnPoints.current.push({...start, ...end})
     };  
 
     const handleMouseMove = (evt, context) => {
@@ -41,6 +43,7 @@ const useDrawing = () =>{
             context.lineWidth = 3;
             context.stroke();
             context.closePath();
+            drawnPoints.current.push({...start, ...end})
           }
       };
 
@@ -48,7 +51,7 @@ const useDrawing = () =>{
         isDrawing.current = false;
     };
 
-    return [handleMouseDown, handleMouseUp, handleMouseMove]
+    return [handleMouseDown, handleMouseUp, handleMouseMove, drawnPoints.current]
 }
 
 export default useDrawing;

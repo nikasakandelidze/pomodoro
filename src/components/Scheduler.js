@@ -7,14 +7,15 @@ import Modal  from './modal/Modal';
 
 import ErrorMessage from './common/ErrorMessage';
 import { Typography } from '@material-ui/core';
-import useTasks from '../hooks/useTasks';
+import useList from '../hooks/useList';
 import { useState } from 'react/cjs/react.development';
 
 import '../styles/Scheduler.css'
 
 let counter = 0;
 export default function Scheduler() {
-    const [tasks, addTask] = useTasks()
+    const validateInputItem = (item) => item.id && item.time && (item.description || item.description === "")
+    const [tasks, addTask] = useList({validateInputItem})
     const { input: timeInput, message: timeInputMessage, handleInputChange: handleTimeInputChange } = useInput({type : "number"});
     const { input: descriptionInput,  handleInputChange: handleDescriptionInputChange } = useInput({type : "string"});
     const [showValidationModal, setShowValidationModal] = useState(false)

@@ -3,10 +3,10 @@ import Scheduler from "./components/Scheduler";
 
 import './App.css'
 import Canvas from "./components/Canvas";
-import useDrawing from "./utils/DrawingUtils";
+import useDrawing from "./hooks/useDrawing";
 
 function App() {
-  const [handleMouseDown, handleMouseUp, handleMouseMove] = useDrawing()
+  const [handleMouseDown, handleMouseUp, handleMouseMove, drawnPoints] = useDrawing()
 
   return (
     <div className='App'>
@@ -27,7 +27,7 @@ function App() {
           <Route path='/canvas'>
               <Canvas w={800} h={500} draw = {(canvas, ctx) => {
                         canvas.addEventListener('mousedown', (e) => handleMouseDown(e, ctx));
-                        canvas.addEventListener('mouseup', handleMouseUp);
+                        canvas.addEventListener('mouseup', () => handleMouseUp());
                         canvas.addEventListener('mousemove', (e) => handleMouseMove(e, ctx));
                 
               }}/>
