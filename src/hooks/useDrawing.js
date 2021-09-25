@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import useList from "./useList";
 
 const useDrawing = () =>{    
     const isDrawing = useRef(false);
@@ -19,7 +18,7 @@ const useDrawing = () =>{
             y: evt.clientY - ctxRect.top,
         };
         isDrawing.current = true;
-        drawnPoints.current.push({...start, ...end})
+        drawnPoints.current.push({start:{...start}, end: {...end}})
     };  
 
     const handleMouseMove = (evt, context) => {
@@ -43,7 +42,7 @@ const useDrawing = () =>{
             context.lineWidth = 3;
             context.stroke();
             context.closePath();
-            drawnPoints.current.push({...start, ...end})
+            drawnPoints.current.push({start: {...start},end: {...end}})
           }
       };
 

@@ -2,12 +2,10 @@ import { Link,Route, BrowserRouter as Router, Switch  } from "react-router-dom";
 import Scheduler from "./components/Scheduler";
 
 import './App.css'
-import Canvas from "./components/Canvas";
-import useDrawing from "./hooks/useDrawing";
+import Drawer from "./components/Drawer";
+
 
 function App() {
-  const [handleMouseDown, handleMouseUp, handleMouseMove, drawnPoints] = useDrawing()
-
   return (
     <div className='App'>
        <Router>
@@ -24,13 +22,8 @@ function App() {
             </li>
           </ul>
           <Switch>
-          <Route path='/canvas'>
-              <Canvas w={800} h={500} draw = {(canvas, ctx) => {
-                        canvas.addEventListener('mousedown', (e) => handleMouseDown(e, ctx));
-                        canvas.addEventListener('mouseup', () => handleMouseUp());
-                        canvas.addEventListener('mousemove', (e) => handleMouseMove(e, ctx));
-                
-              }}/>
+            <Route path='/canvas'>
+              <Drawer/>
             </Route>
             <Route path='/'>
               <Scheduler/>

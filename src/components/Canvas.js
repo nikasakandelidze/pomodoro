@@ -1,7 +1,9 @@
 import { useRef, useEffect} from 'react'
 import useSize from '../hooks/useSize';
 
-export default function Canvas({ w, h, draw }) {
+import CustomButton from './UI/Button';
+
+export default function Canvas({ w, h, draw, replay }) {
     const canvasRef = useRef(null);
     const {ww, hh} = useSize()
     const canvasWidth = (w * ww / window.screen.width) || w
@@ -19,6 +21,9 @@ export default function Canvas({ w, h, draw }) {
                 <canvas style={{outline:'1px solid'}} ref={canvasRef} width={canvasWidth} height={canvasHeight}>
                 </canvas>
             </div>
+            <div>
+                   <CustomButton title={'replay'} onClickCallback={()=>replay(canvasRef.current, canvasRef.current.getContext('2d'))}/>
+               </div>
         </div>
     )
 }
