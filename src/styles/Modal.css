@@ -21,6 +21,17 @@
     transform: translate(-50%,-50%);
     border-radius: 20px;
     border: 1px solid rgb(227, 246, 250);
+    text-align: center;
+  }
+
+  .warning-message{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(162, 203, 250);
+    color: rgb(202, 22, 22);
+    font-size: xx-large;
+    height: 40px;
+    margin-top: 0px;
   }
   
   .display-block {
