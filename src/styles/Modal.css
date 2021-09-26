@@ -33,6 +33,7 @@
     font-size: xx-large;
     height: 40px;
     margin-top: 0px;
+    text-shadow:4px 4px 2px grey;
   }
   
   .display-block {
