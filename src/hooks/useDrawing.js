@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { draw } from "../utils/Utils";
 
 const useDrawing = () =>{    
     const isDrawing = useRef(false);
@@ -33,15 +34,7 @@ const useDrawing = () =>{
               x: evt.clientX - ctxRect.left,
               y: evt.clientY - ctxRect.top,
             };
-    
-            // Draw our path
-            context.beginPath();
-            context.moveTo(start.x, start.y);
-            context.lineTo(end.x, end.y);
-            context.strokeStyle = '#00f';
-            context.lineWidth = 3;
-            context.stroke();
-            context.closePath();
+            draw(context, start, end)
             drawnPoints.current.push({start: {...start},end: {...end}})
           }
       };

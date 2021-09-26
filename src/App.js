@@ -9,13 +9,13 @@ function App() {
   return (
     <div className='App'>
        <Router>
-          <ul>
-            <li>
+          <ul className={'nav-menu'}>
+            <li className={'nav-menu-item'}>
               <Link to='/canvas'>
                 canvas
               </Link>
             </li>
-            <li>
+            <li className={'nav-menu-item'}>
               <Link to='/'>
                 Home
               </Link>

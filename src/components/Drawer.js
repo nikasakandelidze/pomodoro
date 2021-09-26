@@ -2,7 +2,7 @@ import React from 'react'
 
 import Canvas from "./Canvas";
 import useDrawing from "..//hooks/useDrawing";
-import { sleep } from '../utils/Utils';
+import { draw, sleep } from '../utils/Utils';
 
 export default function Drawer() {
     const [handleMouseDown, handleMouseUp, handleMouseMove, drawnPoints] = useDrawing()
@@ -11,13 +11,7 @@ export default function Drawer() {
         for(let element of listOfPoints){
             let start = element.start
             let end = element.end
-            ctx.beginPath();
-            ctx.moveTo(start.x, start.y);
-            ctx.lineTo(end.x, end.y);
-            ctx.strokeStyle = 'red';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-            ctx.closePath();
+            draw(ctx, start, end)
             await sleep(10)
         }
     }
