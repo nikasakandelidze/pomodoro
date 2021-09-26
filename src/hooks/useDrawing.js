@@ -18,7 +18,7 @@ const useDrawing = () =>{
             y: evt.clientY - ctxRect.top,
         };
         isDrawing.current = true;
-        drawnPoints.current.push({start:{...start}, end: {...end}})
+        drawnPoints.current.push({start:{...end}, end: {...end}})
     };  
 
     const handleMouseMove = (evt, context) => {
@@ -48,6 +48,7 @@ const useDrawing = () =>{
 
     const handleMouseUp = () => {
         isDrawing.current = false;
+        drawnPoints.current.push({start:{...start}, end: {...end}})
     };
 
     return [handleMouseDown, handleMouseUp, handleMouseMove, drawnPoints.current]
