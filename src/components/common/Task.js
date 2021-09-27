@@ -2,6 +2,7 @@ import { Card, Typography } from "@material-ui/core";
 import { useState } from "react/cjs/react.development";
 import Timer from "./Timer";
 
+import '../../styles/Task.css'
 
 const cardStyle = {
     display: 'block',
@@ -17,12 +18,10 @@ const Task = ({time, description}) => {
 
     const colorPair = done ? {backgroundColor:'#630A10', color: 'white'} : {backgroundColor:'#FFE194'}
 
-    console.log(colorPair)
-
     const style = {...cardStyle, ...colorPair}
 
     return (
-        <div style={{marginLeft: '20px'}}>
+        <div  className={'task-container'}>
             <Card variant={'elevation'} style={style}>
                 <Timer initTimeout={time} setDone={(value)=>setDone(value)}/>
                 <h4>Description: </h4> <Typography>{description}</Typography>

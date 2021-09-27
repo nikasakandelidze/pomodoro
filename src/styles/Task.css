@@ -1,0 +1,16 @@
+.task-container{
+    position: relative;
+    animation: fade_in;
+    animation-duration: 0.2s;
+    margin-left: 20px;
+}
+
+@keyframes fade_in {
+    from{
+        left: 100%;
+    }
+
+    to{
+        left: 0%;
+    }
+}
