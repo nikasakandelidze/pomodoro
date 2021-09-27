@@ -1,0 +1,14 @@
+.nav-menu{
+    width: 100%;
+    list-style: none;
+  }
+  
+  .nav-menu-item{
+    margin-left: 10px;
+  }
+  
+  .interactive-ui-container{
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+  }
