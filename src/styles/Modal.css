@@ -7,6 +7,8 @@
     background: rgba(237, 241, 243, 0.247);
     z-index: 1;
     filter: blur(0px);
+    animation-name: fade-in;
+    animation-duration: 0.5s;
   }
   
   .modal-main {
@@ -42,4 +44,13 @@
   
   .display-none {
     display: none;
+  }
+  
+  @keyframes fade-in {
+    from {
+      transform: scale(0);
+    }
+    to{
+      transform: scale(1);
+    }
   }

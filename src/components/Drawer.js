@@ -11,7 +11,7 @@ export default function Drawer() {
         for(let element of listOfPoints){
             let start = element.start
             let end = element.end
-            draw(ctx, start, end)
+            draw(ctx, start, end, 'red')
             await sleep(10)
         }
     }
