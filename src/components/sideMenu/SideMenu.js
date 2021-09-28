@@ -1,8 +1,9 @@
 import React from 'react'
 import { Drawer } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import MenuItem from './MenuItem'
 
-import '../styles/SideMenu.css'
+import '../../styles/SideMenu.css'
 
 export default function SideMenu({isOpen, toggleDrawer}) {
     return (
@@ -16,12 +17,12 @@ export default function SideMenu({isOpen, toggleDrawer}) {
                  <ul className={'nav-menu'}>
                     <li className={'nav-menu-item'}>
                     <Link to='/canvas'>
-                        canvas
+                        <MenuItem title={'Canvas'} width={'50px'}/>
                     </Link>
                     </li>
                     <li className={'nav-menu-item'}>
                     <Link to='/'>
-                        Home
+                        <MenuItem title={'Home'} width={'50px'}/>
                     </Link>
                     </li>
                 </ul>
